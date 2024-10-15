@@ -15,6 +15,7 @@ You don't have to use a lot of components to start with when doing this project.
 How you design your page is up to you, but take accessibility into account when you are styling your form elements - so inputs should have labels and should be easily readable and usable. We STRONGLY recommend having some kind of design or sketch before starting to code.
 
 ## How to get started
+
 1. **Person A** forks the repo
 2. **Person A** invites person B as a collaborator to the repo (Settings -> Collaborators and teams -> Add people)
 3. **Person A** clones the repo
@@ -24,6 +25,7 @@ How you design your page is up to you, but take accessibility into account when 
 7. When you're done with a feature, it's time to merge! You choose if you want to work with PRs and code reviews or if you want to do this more verbally before you merge.
 
 ## Requirements:
+
 - Your app should consist of at least 3 questions.
 - At least one question should use radio buttons.
 - At least one question should use a select dropdown.
@@ -37,23 +39,27 @@ How you design your page is up to you, but take accessibility into account when 
 - Make your app responsive (it should look good on devices from 320px width up to 1600px)
 
 ## Stretch goals
+
 So you’ve completed the requirements? Great job! Ensure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
 
 ### Intermediate Stretch Goals
+
 - Use a form element you haven't tried before (such as a [range slider](https://www.w3schools.com/howto/howto_js_rangeslider.asp)) and connect it to React state. You can find a list of input types [here](https://www.w3schools.com/html/html_form_input_types.asp).
 - Add validation to your survey! Use either HTML input validation attributes (such as `required`) or implement custom logic when the user clicks the submit button to make the form fields have validations. If you choose to implement your own validation, you should also make sure to show error messages in a nice way.
 - Create a button that, when clicked, will scroll down to the top of the next question in the survey (if possible)
 
 ### Advanced Stretch Goals
+
 - Visualize to the user how far through the survey they are and how much is left by creating a progress bar
 - Use Regex validation for some input on your survey
 - Show different questions depending on the answer to a specific question
 - Create a multi-step form. Example 👇
   Show each question on its own 'page' with a continue button to progress to the next question (like how typeform does it). If you decide to split your form into sections, then one approach you could take is to try to think of these sections as a single `useState` hook which you can use to conditionally render different groups of inputs. For example, you could have some state like `const [section, setSection] = useState('firstQuestion')` and then when the user presses a button to progress, you'd use the `setSection()` function to progress them to the second question, etc. Then, in your JSX, you could conditionally render, like this:
+
   ```
   const Example = () => {
     const [section, setSection] = useState('firstQuestion')
-  
+
     return (
       <div>
         {section === 'firstQuestion' && (
@@ -61,7 +67,7 @@ So you’ve completed the requirements? Great job! Ensure you've committed and p
             First question...
           </div>
         )}
-  
+
         {section === 'secondQuestion' && (
           <div>
             Second question...
@@ -71,4 +77,5 @@ So you’ve completed the requirements? Great job! Ensure you've committed and p
     )
   }
   ```
+
   As always, there are many ways to approach this! This is just one suggestion.
