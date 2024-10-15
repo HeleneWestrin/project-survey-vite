@@ -6,10 +6,14 @@ import { Results } from "./components/Results";
 export const App = () => {
   const [surveyStarted, setSurveyStarted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState({
+    answer1: "",
+    answer2: "",
+    answer3: "",
+  });
 
-  const handleSurveySubmit = (answers) => {
-    setUserAnswers(answers);
+  const handleSurveySubmit = (event) => {
+    event.preventDefault();
     setCurrentStep(-1); //Switch to results
   };
 
@@ -21,12 +25,14 @@ export const App = () => {
         <Results
           setSurveyStarted={setSurveyStarted}
           setCurrentStep={setCurrentStep}
-          answers={userAnswers}
+          userAnswers={userAnswers}
         />
       ) : (
         <Survey
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
+          userAnswers={userAnswers}
+          setUserAnswers={setUserAnswers}
           onSubmit={handleSurveySubmit}
         />
       )}
