@@ -7,7 +7,7 @@ export const Survey = ({ currentStep, setCurrentStep, onSubmit }) => {
   };
 
   return (
-    <main>
+    <main className="full-width">
       {currentStep === 1 ? (
         <>
           <ProgressIndicator />

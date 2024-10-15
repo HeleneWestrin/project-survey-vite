@@ -1,13 +1,71 @@
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("./assets/fonts/FamiljenGrotesk-Regular.woff2") format("woff2"),
+    url("./assets/fonts/FamiljenGrotesk-Regular.woff") format("woff"),
+    url("./assets/fonts/FamiljenGrotesk-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("./assets/fonts/FamiljenGrotesk-Semibold.woff2") format("woff2"),
+    url("./assets/fonts/FamiljenGrotesk-Semibold.woff") format("woff"),
+    url("./assets/fonts/FamiljenGrotesk-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("./assets/fonts/FamiljenGrotesk-Bold.woff2") format("woff2"),
+    url("./assets/fonts/FamiljenGrotesk-Bold.woff") format("woff"),
+    url("./assets/fonts/FamiljenGrotesk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  --blue-dark: #003174;
+  --blue-dark-rgb: 0, 49, 116;
+  --blue-medium: #667fa2;
+  --pink-dark: #ffb4c7;
+  --pink-light: #fff0f4;
+  --white: #fff;
+}
+
+html {
+  font-family: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  background-color: var(--pink-light);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+
+  &.full-width {
+    width: 100%;
+    max-width: 100%;
+  }
 }
