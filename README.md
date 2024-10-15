@@ -1,7 +1,5 @@
 <h1 align="center">
-  <a href="">
-    <img src="/src/assets/survey.svg" alt="Project Banner Image">
-  </a>
+  Helene was here
 </h1>
 
 # Survey Project
