@@ -1,5 +1,9 @@
 import "./button.css";
 
-export const Button = ({ onClick, text }) => {
-  return <button onClick={onClick}>{text}</button>;
+export const Button = ({ onClick, text, disabled }) => {
+  return (
+    <button aria-disabled={disabled ? true : false} onClick={onClick}>
+      {text}
+    </button>
+  );
 };

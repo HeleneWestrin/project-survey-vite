@@ -21,7 +21,21 @@ export const Survey = ({
 
   // This function advances the user to the next question (increments currentStep by 1)
   const onHandleNext = () => {
-    setCurrentStep(currentStep + 1); // Set the next step by increasing the current step by 1
+    // If the question is not answered, do not proceed to the next step
+    if (!areAllFieldsValid()) return;
+    // Set the next step by increasing the current step by 1
+    setCurrentStep(currentStep + 1);
+  };
+
+  // Check if the userAnswer object has empty values
+  const areAllFieldsValid = () => {
+    const requiredFields = Object.keys(userAnswers).filter((key) =>
+      key.startsWith(`answer${currentStep}`)
+    );
+
+    return requiredFields.every(
+      (key) => userAnswers[key] && userAnswers[key].trim() !== ""
+    );
   };
 
   // JSX is returned here to render the appropriate question based on the current step
@@ -49,7 +63,7 @@ export const Survey = ({
                 value={userAnswers.answer1} // Controlled component: value is tied to the user's input
                 onChange={updateUserAnswers} // Calls the function to update the answer when user types
               />
-              <Button text="Next question" />
+              <Button text="Next question" disabled={!areAllFieldsValid()} />
             </form>
           </section>
         </>
@@ -88,7 +102,7 @@ export const Survey = ({
                 />
                 No, I like the silence
               </label>
-              <Button text="Next question" />
+              <Button text="Next question" disabled={!areAllFieldsValid()} />
             </form>
           </section>
         </>
@@ -112,7 +126,10 @@ export const Survey = ({
                 <option value="select2">Select 2</option>
                 <option value="select3">Select 3</option>
               </select>
-              <Button text="Submit your answers" />
+              <Button
+                text="Submit your answers"
+                disabled={!areAllFieldsValid()}
+              />
             </form>
           </section>
         </>
