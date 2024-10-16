@@ -1,4 +1,3 @@
-import { ProgressIndicator } from "./ProgressIndicator";
 import { SurveyHero } from "./SurveyHero";
 import { Button } from "./ui/Button";
 import "./Survey.css";
