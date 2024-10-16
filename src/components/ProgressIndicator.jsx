@@ -1,3 +1,24 @@
-export const ProgressIndicator = () => {
-  return <section>1 2 3</section>;
+import './progressIndicator.css';
+
+export const ProgressIndicator = ({ currentStep }) => {
+
+  // Function that determines which CSS class to apply to each circle based on current step
+  const getCircleClass = (step) => {
+    if (step < currentStep) return 'completed';
+    if (step === currentStep) return 'active';
+    return '';
+  };
+
+  return (
+    <div className="progress-indicator">
+
+      {/* Map iterates over steps 1, 2, 3 and for each step, it calls getCircleClass(step) to determine appropriate class */}
+      {[1, 2, 3].map((step) => (
+        <div key={step} className={`circle ${getCircleClass(step)}`}>
+          {/* If step is less than current step, it displays a checkmark, otherwise it displays the step number */}
+          {step < currentStep ? '✔' : step}
+        </div>
+      ))}
+    </div>
+  );
 };

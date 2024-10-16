@@ -9,6 +9,7 @@ export const Survey = ({
   setUserAnswers, // Function to update the user's answers
   onSubmit, // Callback function for handling form submission on the last step
 }) => {
+
   // This function updates the user's answers when they interact with an input field (text, checkbox, radio, etc.)
   const updateUserAnswers = (event) => {
     const { name, value, type, checked } = event.target; // Extracting useful info from the event (which input changed)
@@ -29,7 +30,7 @@ export const Survey = ({
       {currentStep === 1 ? ( // Conditional rendering for Step 1
         <>
           <section className="hero">
-            <ProgressIndicator />
+            <ProgressIndicator currentStep={currentStep} />
             <h1 aria-labelledby="answer1">
               What is your favorite mood-boosting activity?
             </h1>
@@ -53,7 +54,7 @@ export const Survey = ({
         </>
       ) : currentStep === 2 ? ( // Conditional rendering for Step 2
         <>
-          <ProgressIndicator />
+          <ProgressIndicator currentStep={currentStep} />
           <h1>Step 2</h1>
           <form
             onSubmit={(event) => {
@@ -86,7 +87,7 @@ export const Survey = ({
         </>
       ) : currentStep === 3 ? (
         <>
-          <ProgressIndicator />
+          <ProgressIndicator currentStep={currentStep} />
           <h1>Step 3</h1>
           <form onSubmit={onSubmit}>
             {/* This form submits the user's final answers */}
