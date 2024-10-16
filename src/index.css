@@ -52,20 +52,48 @@ html {
 body {
   padding: 0;
   margin: 0;
+  background-color: var(--pink-light);
+}
+
+#root {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100svh;
-  background-color: var(--pink-light);
+  width: 100%;
 }
 
-main {
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.05;
+  color: var(--blue-dark);
+
+  @media (min-width: 1025px) {
+    font-size: 3.75rem;
+  }
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+.main-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 40rem;
+  text-align: center;
 
-  &.full-width {
-    width: 100%;
-    max-width: 100%;
+  img {
+    width: 25rem;
+    height: auto;
   }
 }

@@ -1,23 +1,35 @@
 .progress-indicator {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 1.75rem;
 }
 
 .circle {
-  width: 30px;
-  height: 30px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--pink-dark);
   border: 2px solid var(--pink-dark);
-  font-size: 16px;
+  font-size: 1.5rem; /* 24 (font-size you are aiming for) divided by 16 (default root font size) = 1.5 */
+  font-weight: 700;
+
+  span {
+    position: relative;
+    top: -2px;
+  }
+
+  svg {
+    fill: var(--blue-dark);
+    position: relative;
+    top: 5px;
+  }
 }
 
 .circle.active,
 .circle.completed {
   background-color: var(--pink-dark);
-  ;
   color: var(--blue-dark);
 }
