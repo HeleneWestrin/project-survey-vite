@@ -17,6 +17,17 @@ export const App = () => {
     setCurrentStep(-1); //Switch to results
   };
 
+  // Function to clear answers and start over
+  const resetSurvey = () => {
+    setSurveyStarted(false);
+    setCurrentStep(1);
+    setUserAnswers({
+      answer1: "",
+      answer2: "",
+      answer3: "",
+    });
+  };
+
   return (
     <>
       {!surveyStarted ? (
@@ -26,6 +37,7 @@ export const App = () => {
           setSurveyStarted={setSurveyStarted}
           setCurrentStep={setCurrentStep}
           userAnswers={userAnswers}
+          resetSurvey={resetSurvey} // Pass reset function to Results
         />
       ) : (
         <Survey

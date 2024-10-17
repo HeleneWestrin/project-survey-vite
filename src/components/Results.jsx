@@ -2,7 +2,7 @@ import { Button } from "./ui/Button";
 
 import resultsImage from "../assets/results.png";
 
-export const Results = ({ setSurveyStarted, setCurrentStep, userAnswers }) => {
+export const Results = ({ setSurveyStarted, setCurrentStep, userAnswers, resetSurvey }) => {
   return (
     <main className="main-container">
       <img
@@ -19,6 +19,7 @@ export const Results = ({ setSurveyStarted, setCurrentStep, userAnswers }) => {
         onClick={() => {
           setSurveyStarted(false);
           setCurrentStep(1);
+          resetSurvey(); // Invoke resetSurvey function
         }}
         text="Start Over"
       />
