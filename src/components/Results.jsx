@@ -1,8 +1,14 @@
 import { Button } from "./ui/Button";
 
+import resultsImage from "../assets/results.png";
+
 export const Results = ({ setSurveyStarted, setCurrentStep, userAnswers }) => {
   return (
     <main className="main-container">
+      <img
+        src={resultsImage}
+        alt="Cartoon of a person sitting on top of a stack of oversized books and reading a book"
+      />
       <h1>Your results</h1>
       <p>
         You answered <strong>{userAnswers.answer1}</strong> and you say{" "}
