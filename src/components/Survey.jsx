@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SurveyHero } from "./SurveyHero";
 import { Button } from "./ui/Button";
 import "./Survey.css";
@@ -10,6 +11,10 @@ export const Survey = ({
   setUserAnswers, // Function to update the user's answers
   onSubmit, // Callback function for handling form submission on the last step
 }) => {
+
+  // State to track error messages
+  const [errorMessage, setErrorMessage] = useState("");
+
   // This function updates the user's answers when they interact with an input field (text, checkbox, radio, etc.)
   const updateUserAnswers = (event) => {
     const { name, value, type, checked } = event.target; // Extracting useful info from the event (which input changed)
@@ -17,6 +22,7 @@ export const Survey = ({
       ...previous, // Spread operator to retain previous answers while updating the new answer
       [name]: type === "checkbox" ? checked : value, // For checkboxes, use 'checked' instead of 'value'
     }));
+    setErrorMessage(""); // Clear error message when user interacts with form
   };
 
   // This function advances the user to the next question (increments currentStep by 1)
@@ -32,10 +38,14 @@ export const Survey = ({
     const requiredFields = Object.keys(userAnswers).filter((key) =>
       key.startsWith(`answer${currentStep}`)
     );
-
     return requiredFields.every(
       (key) => userAnswers[key] && userAnswers[key].trim() !== ""
     );
+  };
+
+  // Function that updates errorMessage state when user tries to click disabled button
+  const handleDisabledClick = () => {
+    setErrorMessage("Please answer the question before proceeding.");
   };
 
   // JSX is returned here to render the appropriate question based on the current step
@@ -63,8 +73,11 @@ export const Survey = ({
                 value={userAnswers.answer1} // Controlled component: value is tied to the user's input
                 onChange={updateUserAnswers} // Calls the function to update the answer when user types
               />
-              <Button text="Next question" disabled={!areAllFieldsValid()} />
+              {/* handleDisabledClick triggers if button is clicked while disabled */}
+              <Button text="Next question" disabled={!areAllFieldsValid()} onDisabledClick={handleDisabledClick} />
             </form>
+            {/* Conditionally render <p> tag to display errorMessage if it has a truthy value */}
+            {errorMessage && <p>{errorMessage}</p>}
           </section>
         </>
       ) : currentStep === 2 ? ( // Conditional rendering for Step 2
@@ -102,15 +115,16 @@ export const Survey = ({
                 />
                 No, I like the silence
               </label>
-              <Button text="Next question" disabled={!areAllFieldsValid()} />
+              <Button text="Next question" disabled={!areAllFieldsValid()} onDisabledClick={handleDisabledClick} />
             </form>
+            {errorMessage && <p>{errorMessage}</p>}
           </section>
         </>
       ) : currentStep === 3 ? (
         <>
           <SurveyHero
             currentStep={currentStep}
-            question="What is your go-to happy song?"
+            question="What is your go-to happy song?"
             id="question-3"
           />
           <section className="form-container">
@@ -129,8 +143,10 @@ export const Survey = ({
               <Button
                 text="Submit your answers"
                 disabled={!areAllFieldsValid()}
+                onDisabledClick={handleDisabledClick}
               />
             </form>
+            {errorMessage && <p>{errorMessage}</p>}
           </section>
         </>
       ) : (
