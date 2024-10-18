@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SurveyHero } from "./SurveyHero";
+import { RadioButtonGroup } from "./ui/RadioButtonGroup";
 import { Button } from "./ui/Button";
 import "./Survey.css";
 
@@ -62,6 +63,15 @@ export const Survey = ({
     }
   };
 
+  // Options to pass into the RadioButtonGroup component
+  const stepTwoOptions = [
+    "Listening to music",
+    "Spending time outdoors",
+    "Being around friends or family",
+    "Eating your favorite food",
+    "Learning something new",
+  ];
+
   // JSX is returned here to render the appropriate question based on the current step
   return (
     <main className="survey">
@@ -113,110 +123,13 @@ export const Survey = ({
                 onHandleNext(currentStep, setCurrentStep);
               }}
             >
-              <fieldset>
-                <label
-                  tabIndex="0"
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "answer2", "Listening to music")
-                  }
-                  aria-checked={userAnswers.answer2 === "Listening to music"}
-                  role="radio"
-                >
-                  <input
-                    type="radio"
-                    name="answer2"
-                    value="Listening to music"
-                    checked={userAnswers.answer2 === "Listening to music"}
-                    onChange={updateUserAnswers}
-                  />
-                  Listening to music
-                </label>
-
-                <label
-                  tabIndex="0"
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "answer2", "Spending time outdoors")
-                  }
-                  aria-checked={
-                    userAnswers.answer2 === "Spending time outdoors"
-                  }
-                  role="radio"
-                >
-                  <input
-                    type="radio"
-                    name="answer2"
-                    value="Spending time outdoors"
-                    checked={userAnswers.answer2 === "Spending time outdoors"}
-                    onChange={updateUserAnswers}
-                  />
-                  Spending time outdoors
-                </label>
-                <label
-                  tabIndex="0"
-                  onKeyDown={(e) =>
-                    handleKeyDown(
-                      e,
-                      "answer2",
-                      "Being around friends or family"
-                    )
-                  }
-                  aria-checked={
-                    userAnswers.answer2 === "Being around friends or family"
-                  }
-                  role="radio"
-                >
-                  <input
-                    type="radio"
-                    name="answer2"
-                    value="Being around friends or family"
-                    checked={
-                      userAnswers.answer2 === "Being around friends or family"
-                    }
-                    onChange={updateUserAnswers}
-                  />
-                  Being around friends or family
-                </label>
-                <label
-                  tabIndex="0"
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "answer2", "Eating your favorite food")
-                  }
-                  aria-checked={
-                    userAnswers.answer2 === "Eating your favorite food"
-                  }
-                  role="radio"
-                >
-                  <input
-                    type="radio"
-                    name="answer2"
-                    value="Eating your favorite food"
-                    checked={
-                      userAnswers.answer2 === "Eating your favorite food"
-                    }
-                    onChange={updateUserAnswers}
-                  />
-                  Eating your favorite food
-                </label>
-                <label
-                  tabIndex="0"
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "answer2", "Learning something new")
-                  }
-                  aria-checked={
-                    userAnswers.answer2 === "Learning something new"
-                  }
-                  role="radio"
-                >
-                  <input
-                    type="radio"
-                    name="answer2"
-                    value="Learning something new"
-                    checked={userAnswers.answer2 === "Learning something new"}
-                    onChange={updateUserAnswers}
-                  />
-                  Learning something new
-                </label>
-              </fieldset>
+              <RadioButtonGroup
+                name="answer2"
+                options={stepTwoOptions}
+                userAnswers={userAnswers}
+                updateUserAnswers={updateUserAnswers}
+                handleKeyDown={handleKeyDown}
+              />
               <Button
                 text="Next question"
                 disabled={!areAllFieldsValid()}
