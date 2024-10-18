@@ -1,35 +1,13 @@
-<h1 align="center">
-  Helene was here
-</h1>
-
 # Survey Project
 
-Replace this readme with your own information about your project.
+The project involved building a React survey with at least three questions, using different input types (radio buttons, dropdown). Upon submission, users are shown a summary of their answers. The focus was on practicing React state and controlled forms while ensuring accessibility, responsiveness, and clean code.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Collaboration was done via GitHub and we worked on separate branches and to then merge the changes to main.
 
-## Getting Started with the Project
+### The Process
 
-### Dependency Installation & Startup Development Server
-
-Once cloned, navigate to the project's root directory and this project uses npm (Node Package Manager) to manage its dependencies.
-
-The command below is a combination of installing dependencies, opening up the project on VS Code and it will run a development server on your terminal.
-
-```bash
-npm i && code . && npm run dev
-```
-
-### The Problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started out setting up the structure of the project together using LiveShare. When that was done we had a semi-working flow with state manangement. We could then divide the tasks between us. We set up a Canvas in Slack with to-dos and assigned ourselves to various tasks throughout the week.
 
 ### View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-## Instructions
-
-<a href="instructions.md">
-   See instructions of this project
-  </a>
+[View it live »](https://happiness-survey.netlify.app/)
