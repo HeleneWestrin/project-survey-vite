@@ -17,9 +17,12 @@ export const RadioButtonGroup = ({
         <input
           type="radio"
           name={name}
-          value={option}
-          checked={userAnswers[name] === option}
-          onChange={updateUserAnswers}
+          value={option.toLowerCase()}
+          checked={userAnswers[name] === option.toLowerCase()}
+          onChange={(e) => {
+            e.target.value = e.target.value.toLowerCase();
+            updateUserAnswers(e);
+          }}
         />
         {option}
       </label>

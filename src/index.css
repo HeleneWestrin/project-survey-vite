@@ -34,6 +34,12 @@
   box-sizing: border-box;
 }
 
+&:focus-visible {
+  outline: solid 2px solid;
+  outline-offset: 2px;
+  outline-color: red;
+}
+
 :root {
   --blue-dark: #003174;
   --blue-dark-rgb: 0, 49, 116;
@@ -67,6 +73,10 @@ h1 {
   font-size: 2.5rem;
   line-height: 1.05;
   color: var(--blue-dark);
+
+  &:focus {
+    outline: none;
+  }
 
   @media (min-width: 1025px) {
     font-size: 3.75rem;

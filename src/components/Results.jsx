@@ -16,9 +16,11 @@ export const Results = ({
       />
       <h1>Your results</h1>
       <p>
-        For you, <strong>{userAnswers.answer1}</strong> is a great way to feel
-        happier, while <strong>{userAnswers.answer2}</strong> can also brighten
-        your mood during the <strong>{userAnswers.answer3}</strong>.
+        For you, <strong>{userAnswers.answer1.toLowerCase()}</strong> is a great
+        way to feel happier, while{" "}
+        <strong>{userAnswers.answer2.toLowerCase()}</strong> can also brighten
+        your mood during the{" "}
+        <strong>{userAnswers.answer3.toLowerCase()}</strong>.
       </p>
       <Button
         onClick={() => {

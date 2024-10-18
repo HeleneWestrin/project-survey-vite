@@ -23,7 +23,6 @@ export const Survey = ({
     if (heroTitleRef.current) {
       setTimeout(() => {
         heroTitleRef.current.focus();
-        console.log(heroTitleRef);
       }, 150);
     }
   }, [currentStep]);
@@ -168,7 +167,7 @@ export const Survey = ({
               aria-labelledby="question-3"
               onSubmit={(event) => {
                 event.preventDefault();
-                onSubmit;
+                onSubmit(event);
               }}
             >
               {/* This form submits the user's final answers */}
