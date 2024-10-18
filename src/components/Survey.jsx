@@ -11,7 +11,6 @@ export const Survey = ({
   setUserAnswers, // Function to update the user's answers
   onSubmit, // Callback function for handling form submission on the last step
 }) => {
-
   // State to track error messages
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -74,7 +73,11 @@ export const Survey = ({
                 onChange={updateUserAnswers} // Calls the function to update the answer when user types
               />
               {/* handleDisabledClick triggers if button is clicked while disabled */}
-              <Button text="Next question" disabled={!areAllFieldsValid()} onDisabledClick={handleDisabledClick} />
+              <Button
+                text="Next question"
+                disabled={!areAllFieldsValid()}
+                onDisabledClick={handleDisabledClick}
+              />
             </form>
             {/* Conditionally render <p> tag to display errorMessage if it has a truthy value */}
             {errorMessage && <p>{errorMessage}</p>}
@@ -84,7 +87,7 @@ export const Survey = ({
         <>
           <SurveyHero
             currentStep={currentStep}
-            question="Does music make you happy?"
+            question="Which of these things tends to brighten your mood the most?"
             id="question-2"
           />
           <section className="form-container">
@@ -95,27 +98,67 @@ export const Survey = ({
                 onHandleNext(currentStep, setCurrentStep);
               }}
             >
-              <label>
-                <input
-                  type="radio"
-                  name="answer2" // Same name is used for both radio buttons to group them together
-                  value="Yes, absolutely"
-                  checked={userAnswers.answer2 === "Yes, absolutely"} // Sets the radio to checked if it matches the user's answer
-                  onChange={updateUserAnswers} // Updates the answer when a different radio option is selected
-                />
-                Yes, absolutely
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="answer2"
-                  value="No, I like the silence"
-                  checked={userAnswers.answer2 === "No, I like the silence"}
-                  onChange={updateUserAnswers}
-                />
-                No, I like the silence
-              </label>
-              <Button text="Next question" disabled={!areAllFieldsValid()} onDisabledClick={handleDisabledClick} />
+              <fieldset>
+                <label>
+                  <input
+                    type="radio"
+                    name="answer2" // Same name is used for both radio buttons to group them together
+                    value="Listening to music"
+                    checked={userAnswers.answer2 === "Listening to music"} // Sets the radio to checked if it matches the user's answer
+                    onChange={updateUserAnswers} // Updates the answer when a different radio option is selected
+                  />
+                  Listening to music
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="answer2"
+                    value="Spending time outdoors"
+                    checked={userAnswers.answer2 === "Spending time outdoors"}
+                    onChange={updateUserAnswers}
+                  />
+                  Spending time outdoors
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="answer2"
+                    value="Being around friends or family"
+                    checked={
+                      userAnswers.answer2 === "Being around friends or family"
+                    }
+                    onChange={updateUserAnswers}
+                  />
+                  Being around friends or family
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="answer2"
+                    value="Eating your favorite food"
+                    checked={
+                      userAnswers.answer2 === "Eating your favorite food"
+                    }
+                    onChange={updateUserAnswers}
+                  />
+                  Eating your favorite food
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="answer2"
+                    value="Learning something new"
+                    checked={userAnswers.answer2 === "Learning something new"}
+                    onChange={updateUserAnswers}
+                  />
+                  Learning something new
+                </label>
+              </fieldset>
+              <Button
+                text="Next question"
+                disabled={!areAllFieldsValid()}
+                onDisabledClick={handleDisabledClick}
+              />
             </form>
             {errorMessage && <p>{errorMessage}</p>}
           </section>
@@ -124,7 +167,7 @@ export const Survey = ({
         <>
           <SurveyHero
             currentStep={currentStep}
-            question="What is your go-to happy song?"
+            question="What time of day do you usually feel the happiest?"
             id="question-3"
           />
           <section className="form-container">
@@ -136,9 +179,10 @@ export const Survey = ({
                 onChange={updateUserAnswers} // Update the user's answer when a different option is chosen
               >
                 <option value="">Select an option</option>
-                <option value="select1">Select 1</option>
-                <option value="select2">Select 2</option>
-                <option value="select3">Select 3</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+                <option value="night">Night</option>
               </select>
               <Button
                 text="Submit your answers"

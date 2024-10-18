@@ -32,10 +32,24 @@
     flex-flow: column wrap;
     justify-content: space-between;
     flex-grow: 1;
-    gap: 1.25rem;
+    gap: 0.75rem;
 
     @media (min-width: 1025px) {
       justify-content: center;
+      gap: 1.25rem;
+    }
+
+    fieldset {
+      border: none;
+      display: flex;
+      gap: 0.75rem;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+
+      @media (min-width: 1025px) {
+        gap: 0.875rem;
+      }
     }
   }
 
@@ -46,7 +60,8 @@
   }
 }
 
-input {
+input,
+label:has(input[type="radio"]) {
   color: var(--blue-dark);
   background-color: var(--white);
   border: 2px solid var(--blue-dark);
@@ -67,5 +82,36 @@ input {
   &:focus {
     outline: none;
     box-shadow: 0px 0px 0px 4px rgba(0, 49, 116, 0.2);
+  }
+}
+
+label:has(input[type="radio"]) {
+  cursor: pointer;
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    transition: width 0.2s ease-out;
+  }
+}
+
+/* Hide the actual radio button */
+input[type="radio"] {
+  display: none;
+}
+
+/* Styling when radio button is checked */
+label:has(input[type="radio"]:checked) {
+  background-color: var(--blue-dark);
+  color: var(--white);
+
+  &:before {
+    background-image: url("../assets/checkmark.svg");
+    background-position: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    top: 2px;
   }
 }
