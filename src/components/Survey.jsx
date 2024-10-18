@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SurveyHero } from "./SurveyHero";
 import { RadioButtonGroup } from "./ui/RadioButtonGroup";
 import { Button } from "./ui/Button";
@@ -14,6 +14,19 @@ export const Survey = ({
 }) => {
   // State to track error messages
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Ref for the SurveyHero title (h1)
+  const heroTitleRef = useRef(null);
+
+  useEffect(() => {
+    // When the current step changes, focus on the title element
+    if (heroTitleRef.current) {
+      setTimeout(() => {
+        heroTitleRef.current.focus();
+        console.log(heroTitleRef);
+      }, 150);
+    }
+  }, [currentStep]);
 
   // This function updates the user's answers when they interact with an input field (text, checkbox, radio, etc.)
   const updateUserAnswers = (event) => {
@@ -81,9 +94,11 @@ export const Survey = ({
             currentStep={currentStep}
             question="What is your favorite mood-boosting activity?"
             id="question-1"
+            ref={heroTitleRef}
           />
           <section className="form-container">
             <form
+              aria-labelledby="question-1"
               onSubmit={(event) => {
                 event.preventDefault(); // Prevents the default form submission behavior (reloading the page)
                 onHandleNext(currentStep, setCurrentStep); // Move to the next step when the form is submitted
@@ -114,6 +129,7 @@ export const Survey = ({
             currentStep={currentStep}
             question="Which of these things tends to brighten your mood the most?"
             id="question-2"
+            ref={heroTitleRef}
           />
           <section className="form-container">
             <form
@@ -145,9 +161,16 @@ export const Survey = ({
             currentStep={currentStep}
             question="What time of day do you usually feel the happiest?"
             id="question-3"
+            ref={heroTitleRef}
           />
           <section className="form-container">
-            <form onSubmit={onSubmit}>
+            <form
+              aria-labelledby="question-3"
+              onSubmit={(event) => {
+                event.preventDefault();
+                onSubmit;
+              }}
+            >
               {/* This form submits the user's final answers */}
               <select
                 name="answer3" // The name used to track the selected option

@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: column;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
 
   @media (min-width: 1025px) {
     flex-flow: row;
@@ -27,6 +27,11 @@
 
 .form-container {
   flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 1.25rem !important;
+  }
+
   form {
     display: flex;
     flex-flow: column wrap;

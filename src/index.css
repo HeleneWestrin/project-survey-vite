@@ -92,11 +92,16 @@ h1 {
   width: 100%;
   max-width: 40rem;
   text-align: center;
+  padding: 0 1rem 1rem;
 
   img {
-    width: 25rem;
+    width: 80vw;
     max-width: 100%;
     height: auto;
+
+    @media (min-width: 768px) {
+      width: 25rem;
+    }
   }
 
   h1 {
@@ -107,7 +112,6 @@ h1 {
   p {
     color: var(--blue-dark);
     font-size: 1.35rem;
-    margin-block-start: 0;
-    margin-block-end: 1.75em;
+    margin: 0 0 1.5rem;
   }
 }
