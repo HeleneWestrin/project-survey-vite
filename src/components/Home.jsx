@@ -5,6 +5,8 @@ export const Home = ({ setSurveyStarted }) => {
   return (
     <main className="main-container">
       <img
+        width="400"
+        height="400"
         src={homeImage}
         alt="Cartoon of a person relaxed and sleeping on the sofa with abstract shapes in the background"
       />

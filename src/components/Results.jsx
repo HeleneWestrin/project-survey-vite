@@ -11,6 +11,8 @@ export const Results = ({
   return (
     <main className="main-container">
       <img
+        width="400"
+        height="400"
         src={resultsImage}
         alt="Cartoon of a person sitting on top of a stack of oversized books and reading a book"
       />
