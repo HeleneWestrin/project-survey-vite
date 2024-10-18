@@ -61,7 +61,8 @@
 }
 
 input,
-label:has(input[type="radio"]) {
+label:has(input[type="radio"]),
+select {
   color: var(--blue-dark);
   background-color: var(--white);
   border: 2px solid var(--blue-dark);
@@ -79,7 +80,10 @@ label:has(input[type="radio"]) {
   font-weight: 600;
   line-height: 110%;
 
-  &:focus {
+  transition: box-shadow 0.2s ease-out;
+
+  &:focus,
+  &:hover {
     outline: none;
     box-shadow: 0px 0px 0px 4px rgba(0, 49, 116, 0.2);
   }
@@ -114,4 +118,16 @@ label:has(input[type="radio"]:checked) {
     position: relative;
     top: 2px;
   }
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+select {
+  appearance: none;
+  background-image: url("../assets/arrow-down.svg");
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
 }

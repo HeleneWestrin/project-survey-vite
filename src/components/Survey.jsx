@@ -47,6 +47,21 @@ export const Survey = ({
     setErrorMessage("Please answer the question before proceeding.");
   };
 
+  const updateUserAnswersDirect = (name, value) => {
+    setUserAnswers((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+    setErrorMessage(""); // Clear error message when user interacts with form
+  };
+
+  const handleKeyDown = (e, name, value) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault(); // Prevents default behavior
+      updateUserAnswersDirect(name, value);
+    }
+  };
+
   // JSX is returned here to render the appropriate question based on the current step
   return (
     <main className="survey">
@@ -99,17 +114,34 @@ export const Survey = ({
               }}
             >
               <fieldset>
-                <label>
+                <label
+                  tabIndex="0"
+                  onKeyDown={(e) =>
+                    handleKeyDown(e, "answer2", "Listening to music")
+                  }
+                  aria-checked={userAnswers.answer2 === "Listening to music"}
+                  role="radio"
+                >
                   <input
                     type="radio"
-                    name="answer2" // Same name is used for both radio buttons to group them together
+                    name="answer2"
                     value="Listening to music"
-                    checked={userAnswers.answer2 === "Listening to music"} // Sets the radio to checked if it matches the user's answer
-                    onChange={updateUserAnswers} // Updates the answer when a different radio option is selected
+                    checked={userAnswers.answer2 === "Listening to music"}
+                    onChange={updateUserAnswers}
                   />
                   Listening to music
                 </label>
-                <label>
+
+                <label
+                  tabIndex="0"
+                  onKeyDown={(e) =>
+                    handleKeyDown(e, "answer2", "Spending time outdoors")
+                  }
+                  aria-checked={
+                    userAnswers.answer2 === "Spending time outdoors"
+                  }
+                  role="radio"
+                >
                   <input
                     type="radio"
                     name="answer2"
@@ -119,7 +151,20 @@ export const Survey = ({
                   />
                   Spending time outdoors
                 </label>
-                <label>
+                <label
+                  tabIndex="0"
+                  onKeyDown={(e) =>
+                    handleKeyDown(
+                      e,
+                      "answer2",
+                      "Being around friends or family"
+                    )
+                  }
+                  aria-checked={
+                    userAnswers.answer2 === "Being around friends or family"
+                  }
+                  role="radio"
+                >
                   <input
                     type="radio"
                     name="answer2"
@@ -131,7 +176,16 @@ export const Survey = ({
                   />
                   Being around friends or family
                 </label>
-                <label>
+                <label
+                  tabIndex="0"
+                  onKeyDown={(e) =>
+                    handleKeyDown(e, "answer2", "Eating your favorite food")
+                  }
+                  aria-checked={
+                    userAnswers.answer2 === "Eating your favorite food"
+                  }
+                  role="radio"
+                >
                   <input
                     type="radio"
                     name="answer2"
@@ -143,7 +197,16 @@ export const Survey = ({
                   />
                   Eating your favorite food
                 </label>
-                <label>
+                <label
+                  tabIndex="0"
+                  onKeyDown={(e) =>
+                    handleKeyDown(e, "answer2", "Learning something new")
+                  }
+                  aria-checked={
+                    userAnswers.answer2 === "Learning something new"
+                  }
+                  role="radio"
+                >
                   <input
                     type="radio"
                     name="answer2"
@@ -179,10 +242,10 @@ export const Survey = ({
                 onChange={updateUserAnswers} // Update the user's answer when a different option is chosen
               >
                 <option value="">Select an option</option>
-                <option value="morning">Morning</option>
-                <option value="afternoon">Afternoon</option>
-                <option value="evening">Evening</option>
-                <option value="night">Night</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+                <option value="Night">Night</option>
               </select>
               <Button
                 text="Submit your answers"
