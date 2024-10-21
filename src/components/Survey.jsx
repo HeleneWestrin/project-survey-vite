@@ -71,7 +71,7 @@ export const Survey = ({
   const handleKeyDown = (e, name, value) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault(); // Prevents default behavior
-      updateUserAnswersDirect(name, value);
+      updateUserAnswersDirect(name, value.toLowerCase()); // Set the selected radio
     }
   };
 

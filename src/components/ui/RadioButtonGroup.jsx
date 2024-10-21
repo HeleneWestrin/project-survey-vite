@@ -10,8 +10,8 @@ export const RadioButtonGroup = ({
       <label
         key={option}
         tabIndex="0"
-        onKeyDown={(e) => handleKeyDown(e, name, option)}
-        aria-checked={userAnswers[name] === option}
+        onKeyDown={(event) => handleKeyDown(event, name, option)}
+        aria-checked={userAnswers[name] === option.toLowerCase()}
         role="radio"
       >
         <input
@@ -19,9 +19,9 @@ export const RadioButtonGroup = ({
           name={name}
           value={option.toLowerCase()}
           checked={userAnswers[name] === option.toLowerCase()}
-          onChange={(e) => {
-            e.target.value = e.target.value.toLowerCase();
-            updateUserAnswers(e);
+          onChange={(event) => {
+            event.target.value = event.target.value.toLowerCase();
+            updateUserAnswers(event);
           }}
         />
         {option}
