@@ -111,6 +111,12 @@ export const Survey = ({
                 value={userAnswers.answer1} // Controlled component: value is tied to the user's input
                 onChange={updateUserAnswers} // Calls the function to update the answer when user types
               />
+              {/* Conditionally render <p> tag to display errorMessage if it has a truthy value */}
+              {errorMessage && (
+                <p aria-live="assertive" className="error">
+                  {errorMessage}
+                </p>
+              )}
               {/* handleDisabledClick triggers if button is clicked while disabled */}
               <Button
                 text="Next question"
@@ -118,8 +124,6 @@ export const Survey = ({
                 onDisabledClick={handleDisabledClick}
               />
             </form>
-            {/* Conditionally render <p> tag to display errorMessage if it has a truthy value */}
-            {errorMessage && <p>{errorMessage}</p>}
           </section>
         </>
       ) : currentStep === 2 ? ( // Conditional rendering for Step 2
@@ -145,13 +149,17 @@ export const Survey = ({
                 updateUserAnswers={updateUserAnswers}
                 handleKeyDown={handleKeyDown}
               />
+              {errorMessage && (
+                <p aria-live="assertive" className="error">
+                  {errorMessage}
+                </p>
+              )}
               <Button
                 text="Next question"
                 disabled={!areAllFieldsValid()}
                 onDisabledClick={handleDisabledClick}
               />
             </form>
-            {errorMessage && <p>{errorMessage}</p>}
           </section>
         </>
       ) : currentStep === 3 ? (
@@ -182,13 +190,17 @@ export const Survey = ({
                 <option value="Evening">Evening</option>
                 <option value="Night">Night</option>
               </select>
+              {errorMessage && (
+                <p aria-live="assertive" className="error">
+                  {errorMessage}
+                </p>
+              )}
               <Button
                 text="Submit your answers"
                 disabled={!areAllFieldsValid()}
                 onDisabledClick={handleDisabledClick}
               />
             </form>
-            {errorMessage && <p>{errorMessage}</p>}
           </section>
         </>
       ) : (
